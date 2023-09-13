@@ -1,0 +1,126 @@
+$themes: (
+  light: (
+    appColor: rgb(85,220,85),
+    textColor: #000,
+    bg: white,
+    logo: black,
+    logoReverse: white,
+    bgSoft: #e3e3e3,
+    bgSoft2: #e9e9e9,
+    textColorSoft: #555,
+    textColorSoft2: #555,
+    textColorSoft3: #000,
+    border: lightgray,
+    borderLight: lightgray,
+    borderBlend: white,
+    iconColor: #282828,
+    hoverSoft:#e9e9e9,
+    outlineSoft: #282828,
+    marketBg: #f6f6f6,
+    iconLight: grey,
+  ),
+  dark: (
+    appColor: rgb(85,220,85),
+    textColor: whitesmoke,
+    bg: black,
+    logo: white,
+    logoReverse: black,
+    bgSoft: #090909,
+    bgSoft2: #2a2a2a,
+    textColorSoft: lightgray,
+    textColorSoft2: #9e9e9e,
+    textColorSoft3: gray,
+    border: #444,
+    borderBlend: #444,
+    borderLight: #444,
+    iconColor: whitesmoke,
+    hoverSoft:#333,
+    outlineSoft: #333,
+    marketBg: white, 
+    iconLight: white,
+  ),
+);
+
+@mixin themify($themes) {
+  @each $theme, $map in $themes {
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), "#{$key}");
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value,
+          )
+        ) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}
+
+@mixin mobile400 {
+  @media (max-width: 400px) {
+    @content;
+  }
+}
+
+@mixin mobile420 {
+  @media (max-width: 420px) {
+    @content;
+  }
+}
+
+@mixin mobile500 {
+  @media (max-width: 500px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin mobile1 {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
+
+@mixin mobile2 {
+  @media (max-width: 700px) {
+    @content;
+  }
+}
+
+@mixin mobile2-reversed {
+  @media (min-width: 700px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: 960px) {
+    @content;
+  }
+}
+
+@mixin tablet2 {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+
+
+@mixin desktop {
+  @media (max-width: 1800px) {
+    @content;
+  }
+}

@@ -1,0 +1,45 @@
+@import "./style.scss";
+
+.events {
+  @include themify($themes) {
+    #body{
+        background-color: themed("bgSoft");
+    }
+  }
+}
+
+.waitingRoom {
+  @include themify($themes) {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 95vh;
+    padding-bottom: 5vh;
+    margin-top: -70px;
+    flex-direction: column;
+    gap: 40px;
+
+    input {
+      padding-left: 8px;
+      height: 30px;
+      border-radius: 5px;
+      font-size: 14px;
+      width: 150px;
+    }
+    
+    .play {
+      background-color: white;
+      color: black;
+      font-weight: 600;
+      font-size: 25px;
+      padding: 9px 22px;
+      border-radius: 10px;
+      cursor: pointer;
+
+      &:hover{
+        opacity: 0.7;
+      }
+    }
+  }
+}

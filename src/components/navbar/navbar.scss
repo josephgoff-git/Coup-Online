@@ -1,0 +1,274 @@
+@import "../../style.scss";
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  user-select: none;
+  @include themify($themes) {
+
+    .input {
+      position: absolute;
+      border: 1px solid themed("border");
+      border-radius: 5px;
+      width: 215px;
+      opacity: 0;
+      pointer-events: none;
+      left: calc(100vw - 243px);
+
+      display: flex;
+      flex-direction: column;
+      height: auto;
+      background-color: themed("bg");
+      top: 16px;
+
+      ul {
+        margin-top: 2px;
+        max-height: 204px;
+        overflow-y: scroll;
+        li {
+          border-top: 1px solid themed("border");
+          list-style-type: none;
+          .link {
+              padding: 10px;
+              margin: 0; 
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              &:hover > p{
+                color: themed("textColorSoft2");
+              }
+
+              img {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                object-fit: cover;
+                flex-shrink: 0;
+                user-select: none;
+                margin-left: 3px;
+              } 
+
+              p {
+                margin-left: 11px;
+                font-size: 1rem;
+                color: themed("textColor");
+              }
+          }
+        }
+      }
+
+      .top {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        padding: 5px;
+
+        input[type="text"]  {
+          border: none;
+          background-color: transparent;
+          color: themed("textColor");
+          width: calc(100% - 33px);
+          font-size: 14px;
+          margin-top: 2px;
+          margin-left: 35px;
+        }
+
+        input:focus {
+          outline: none;
+        }
+      }
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 20px;
+      height: 50px;
+      border-bottom: 1px solid themed("border");
+      background-color: themed("bg");
+
+      color:themed("textColor");
+      z-index: 997;
+
+      .left {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        // margin-top: -5px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        * {
+            cursor: default;
+          // user-select: none;
+          // &:hover {opacity: 0.7;} 
+        }
+
+        span {
+          font-weight: bold;
+          font-size: 20px;
+          color: themed("textColorSoft");
+          margin-right: 20px;
+          cursor: default;
+
+          @include mobile400{
+            margin-right: 0;
+          }
+        }
+      }
+
+      .center {
+        display: flex;
+        align-items: center;
+        width: 43vw;
+        margin-right: calc(-15vw - 4px);
+        position: relative;
+        height: auto;
+
+        @include mobile1{
+          display: none;
+          pointer-events: none;
+        }
+
+        .search {
+          display: flex;
+          border: 1px solid themed("border");
+          border-radius: 5px;
+          width: 83%;
+          flex-direction: column;
+          height: auto;
+          background-color: themed("bg");
+          position: absolute;
+          top: 6px;
+
+          ul {
+            margin-top: 2px;
+            max-height: 204px;
+            overflow-y: scroll;
+            li {
+              border-top: 1px solid themed("border");
+              list-style-type: none;
+              .link {
+                  padding: 10px;
+                  margin: 0; 
+                  display: flex;
+                  flex-direction: row;
+                  align-items: center;
+                  &:hover > p{
+                    color: themed("textColorSoft2");
+                  }
+
+                  img {
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    flex-shrink: 0;
+                    user-select: none;
+                    margin-left: 3px;
+                  } 
+
+                  p {
+                    margin-left: 11px;
+                    font-size: 1rem;
+                    color: themed("textColor");
+                  }
+              }
+            }
+          }
+
+          .top {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            padding: 5px;
+
+            :first-child {
+              margin-left: 4px;
+              margin-top: 2px;
+            }
+  
+            input[type="text"]  {
+              border: none;
+              background-color: transparent;
+              color: themed("textColor");
+              width: calc(100% - 33px);
+              font-size: 14px;
+              margin-left: 5px;
+            }
+  
+            input:focus {
+              outline: none;
+            }
+          }
+
+     
+        }
+
+        .appearance{
+          position: absolute;
+          pointer-events: all;
+          margin-left: calc(86% + 16px);
+          margin-top: 5px;
+        }
+
+        .appearance:hover {
+          opacity: 0.7;
+          cursor: pointer;
+        }
+      }
+
+      .right {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        @include mobile400{
+          margin-right: -14px;
+        }
+
+
+        * {
+          cursor: pointer;
+          z-index: 999;
+          pointer-events: none;
+        }
+
+        div:hover{
+          opacity: 0.7;
+        }
+
+        .small-screen {
+          opacity: 0;
+
+          @include mobile1{
+            opacity: 1;
+          } 
+        }
+
+        .user {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-weight: 500;
+          pointer-events: all;
+
+          @include tablet{
+            display: none;
+          }
+
+          img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+            user-select: none;
+          }
+        }
+      }
+    }
+  }
+}
